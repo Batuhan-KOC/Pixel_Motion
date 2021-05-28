@@ -4,6 +4,7 @@
 #include <QWidget>
 #include <QString>
 #include <QImage>
+#include <QPixelFormat>
 
 #include "imageprocessor.h"
 
@@ -31,11 +32,26 @@ private:
     int SigmaValue;
     bool SmoothingActive;
 
+    float VideoSlider;
+
     QString FileLocation;
+
+    // IMAGES
     std::vector<QImage> Frames;
     QImage TopLevelImage;
 
+    // VIDEOS
+    QImage videoFrameProcessed;
+    long long totalFrame;
+    float frame_rate;
+
+    int frame_width;
+    int frame_height;
+
     ImageProcessor* workerThread;
+
+    // PRIVATE FUNCTIONS
+
 signals:
     /*Send image to the GUI Dock Widget to display */
     void DeliverImage(QImage frame);
@@ -52,6 +68,8 @@ public slots:
     void QuantizerIndexUpdate(int value);
     void SigmaValueUpdate(float value);
     void SmoothingActiveUpdate(bool value);
+
+    void VideoSliderUpdate(float value);
 
     /* New file selected */
     void FileLocationUpdate(QString value);

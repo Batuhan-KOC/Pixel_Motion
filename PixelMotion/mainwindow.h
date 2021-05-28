@@ -32,9 +32,12 @@ signals:
     void QuantizerIndex_To_TuneManager(int value);
     void SmoothingActive_To_TuneManager(bool value);
 
+    void VideoSlider_To_TuneManager(float value);
+
     void FileLocation_To_TuneManager(QString value);
     void UpdateRequested();
     void exportRequested();
+
 
 
 private slots:
@@ -82,13 +85,23 @@ private slots:
 
     void on_QualitySlider_valueChanged(int value);
 
+    void on_VideoSlider_valueChanged(int value);
+
 private:
     Ui::MainWindow *ui;
+
+    void EchoImageFunction(QImage image);
+    bool HideVideoContent();
+    bool ShowVideoContent();
 
     TuneManager *_tuneManager;
     QString exportLocation = "";
 
     QString exportFileType = ".jpeg";
     int exportQuality = 100;
+
+    float videoSliderValue =  0.0;
+
+    bool UpdateInProgress = false;
 };
 #endif // MAINWINDOW_H

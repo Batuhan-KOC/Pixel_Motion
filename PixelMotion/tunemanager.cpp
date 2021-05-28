@@ -12,7 +12,10 @@ TuneManager::TuneManager(QWidget *parent) : QWidget(parent)
     QuantizerIndex = 0;
     SigmaValue = 1;
     SmoothingActive = false;
+
+    VideoSlider = 0.0;
 }
+
 
 void TuneManager::PixelSizeUpdate(int value)
 {
@@ -59,38 +62,55 @@ void TuneManager::SmoothingActiveUpdate(bool value)
     this->SmoothingActive = value;
 }
 
+void TuneManager::VideoSliderUpdate(float value)
+{
+    this->VideoSlider = value;
+}
+
 void TuneManager::FileLocationUpdate(QString value)
 {
     this->FileLocation = value;
-    QImage newImage = QImage(FileLocation);
 
-    if(!newImage.isNull())
+    QString fileFormat = value.split('.').last();
+
+    if(fileFormat == "jpeg" || fileFormat == "png" || fileFormat == "jpg")
     {
-        Frames.push_back(newImage);
+        QImage newImage = QImage(FileLocation);
 
-        emit DeliverImage(newImage);
+        if(!newImage.isNull())
+        {
+            Frames.push_back(newImage);
+
+            emit DeliverImage(newImage);
+        }
+    }
+    else if(fileFormat == "mp4" || fileFormat == "mov" || fileFormat == "wmv" || fileFormat == "avi" || fileFormat == "mkv")
+    {
     }
 }
 
 void TuneManager::updateRequested()
 {
-    QImage _image = Frames.back();                  // Capture the top image from the Frames vector
-    this->workerThread = new ImageProcessor();      // Create an instance of thread class
-    this->workerThread->initializeProcessor(_image, // Initialize thread with tune parameters
-                                            this->Pixel_Size,
-                                            this->Color_Amount,
-                                            this->Saturation_Amount,
-                                            this->Smoothing_Factor,
-                                            this->Smoothing_Iteration,
-                                            this->InvisiblePixelCalculation,
-                                            this->QuantizerIndex,
-                                            this->SigmaValue,
-                                            this->SmoothingActive);
+    if(Frames.size() > 0)
+    {
+        QImage _image = Frames.back();                  // Capture the top image from the Frames vector
+        this->workerThread = new ImageProcessor();      // Create an instance of thread class
+        this->workerThread->initializeProcessor(_image, // Initialize thread with tune parameters
+                                                this->Pixel_Size,
+                                                this->Color_Amount,
+                                                this->Saturation_Amount,
+                                                this->Smoothing_Factor,
+                                                this->Smoothing_Iteration,
+                                                this->InvisiblePixelCalculation,
+                                                this->QuantizerIndex,
+                                                this->SigmaValue,
+                                                this->SmoothingActive);
 
-    connect(this->workerThread, &QThread::finished,this->workerThread,&QThread::deleteLater);   // Auto call delete when thread is finished
-    connect(this->workerThread,&ImageProcessor::sendProcessedImage,this,&TuneManager::threadFinished);  // Get processed image when thread response
+        connect(this->workerThread, &QThread::finished,this->workerThread,&QThread::deleteLater);   // Auto call delete when thread is finished
+        connect(this->workerThread,&ImageProcessor::sendProcessedImage,this,&TuneManager::threadFinished);  // Get processed image when thread response
 
-    this->workerThread->start();
+        this->workerThread->start();
+    }
 }
 
 void TuneManager::threadFinished(QImage processedImage)

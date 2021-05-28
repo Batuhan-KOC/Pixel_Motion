@@ -35,13 +35,16 @@ MainWindow::MainWindow(QWidget *parent)
     connect(this->ui->SetLocationFolderAction,&QAction::triggered,this,&MainWindow::Set_Export_Location_Action);
     connect(this->ui->AboutAction,&QAction::triggered,this,&MainWindow::About_Action);
     connect(this->ui->HowItWorksAction,&QAction::triggered,this,&MainWindow::How_It_Works_Action);
+
+    QImage bannerImage = QImage(":/images/bannerTransparent.png","PNG");
+    bannerImage = bannerImage.convertToFormat(QImage::Format_RGBA8888);
+    EchoImageFunction(bannerImage);
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
 }
-
 
 void MainWindow::on_PixelSizeSlider_valueChanged(int value)
 {
@@ -89,6 +92,7 @@ void MainWindow::Open_Image_Action()
     QString fileName = QFileDialog::getOpenFileName(this, tr("Open Image File"),
                                                      "/home",
                                                      tr("Images (*.png *.jpeg *.jpg)"));
+    HideVideoContent();
 
     if(!fileName.isEmpty())
         emit FileLocation_To_TuneManager(fileName);
@@ -96,7 +100,14 @@ void MainWindow::Open_Image_Action()
 
 void MainWindow::Open_Video_Action()
 {
+    ShowVideoContent();
 
+    QString fileName = QFileDialog::getOpenFileName(this, tr("Open Video File"),
+                                                     "/home",
+                                                     tr("Videos (*.mp4 *.mov *.wmv *.avi *.mkv)"));
+
+    if(!fileName.isEmpty())
+        emit FileLocation_To_TuneManager(fileName);
 }
 
 void MainWindow::Export_Action()
@@ -155,27 +166,18 @@ void MainWindow::How_It_Works_Action()
 
 void MainWindow::on_UpdateButton_clicked()
 {
-    emit UpdateRequested();
+    if(!this->UpdateInProgress){
+        this->ui->UpdateButton->setText("IN PROCESS");
+        this->UpdateInProgress = true;
+        emit UpdateRequested();
+    }
 }
 
 void MainWindow::Echo_Image_On_Canvas(QImage frame)
 {
-    QPixmap _pixmap;
-
-    QString tempFile = "temp.bmp";
-
-    frame.save(tempFile,"BMP",100);
-
-    _pixmap = QPixmap(tempFile,"BMP");
-
-    QDir dir;
-    dir.remove(tempFile);
-
-    this->ui->ImageLabel->setPixmap(_pixmap.scaled(this->ui->ImageLabel->width(),
-                                                   this->ui->ImageLabel->height(),
-                                                   Qt::KeepAspectRatio));
-
-    this->update();
+    this->ui->UpdateButton->setText("UPDATE");
+    this->UpdateInProgress = false;
+    EchoImageFunction(frame);
 }
 
 
@@ -256,4 +258,41 @@ void MainWindow::on_QualitySlider_valueChanged(int value)
 {
     this->ui->QualityValue->setText(QString::number(value));
     this->exportQuality = value;
+}
+
+void MainWindow::EchoImageFunction(QImage image)
+{
+    QPixmap _pixmap;
+
+    QString tempFile = "temp.png";
+
+    image.save(tempFile,"PNG",100);
+
+    _pixmap = QPixmap(tempFile,"PNG");
+
+    QDir dir;
+    dir.remove(tempFile);
+
+    this->ui->ImageLabel->setPixmap(_pixmap.scaled(this->ui->ImageLabel->width(),
+                                                   this->ui->ImageLabel->height(),
+                                                   Qt::KeepAspectRatio));
+
+    this->update();
+}
+
+bool MainWindow::HideVideoContent()
+{
+    this->ui->VideoSlider->setVisible(false);
+}
+
+bool MainWindow::ShowVideoContent()
+{
+    this->ui->VideoTimeLabel->setVisible(true);
+}
+
+void MainWindow::on_VideoSlider_valueChanged(int value)
+{
+    this->videoSliderValue = (float(value)/100.0);
+
+    emit VideoSlider_To_TuneManager(this->videoSliderValue);
 }

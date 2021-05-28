@@ -72,7 +72,7 @@
     </font>
    </property>
    <property name="styleSheet">
-    <string notr="true">background-color: rgb(217, 217, 108);</string>
+    <string notr="true">background-color: rgb(239, 192, 98);</string>
    </property>
    <widget class="QMenu" name="FileMenu">
     <property name="font">
@@ -131,7 +131,7 @@
     </size>
    </property>
    <property name="styleSheet">
-    <string notr="true">background-color: rgb(255, 254, 197);</string>
+    <string notr="true">background-color: rgb(244, 230, 201);</string>
    </property>
    <property name="features">
     <set>QDockWidget::NoDockWidgetFeatures</set>
@@ -165,8 +165,7 @@
       </font>
      </property>
      <property name="styleSheet">
-      <string notr="true">background-color: rgb(179, 195, 71);
-alternate-background-color: rgb(149, 255, 119);</string>
+      <string notr="true">background-color: rgb(239, 192, 98);</string>
      </property>
      <property name="frameShape">
       <enum>QFrame::NoFrame</enum>
@@ -181,7 +180,7 @@ alternate-background-color: rgb(149, 255, 119);</string>
       <number>0</number>
      </property>
      <property name="currentIndex">
-      <number>3</number>
+      <number>0</number>
      </property>
      <property name="tabSpacing">
       <number>2</number>
@@ -202,7 +201,7 @@ alternate-background-color: rgb(149, 255, 119);</string>
        </sizepolicy>
       </property>
       <property name="styleSheet">
-       <string notr="true">background-color: rgb(236, 241, 180);</string>
+       <string notr="true">background-color: rgb(244, 230, 201);</string>
       </property>
       <attribute name="label">
        <string>Pixel Size</string>
@@ -234,11 +233,13 @@ alternate-background-color: rgb(149, 255, 119);</string>
          <x>20</x>
          <y>40</y>
          <width>391</width>
-         <height>31</height>
+         <height>21</height>
         </rect>
        </property>
        <property name="styleSheet">
-        <string notr="true"/>
+        <string notr="true">.QSlider::handle:horizontal { background: #efc062; border: 1px solid #B5E61D; height: 50px; margin: -30px -30px; border-radius: 4px; }
+.QSlider::sub-page:horizontal {background: qlineargradient(x1: 0, y1: 0,    x2: 0, y2: 1, stop: 0 #e1e1e1 stop: 1 #d8d8d8);background: qlineargradient(x1: 0, y1: 0.2, x2: 1, y2: 1,stop: 0 #e1e1e1, stop: 1 #d8d8d8);border: 1px solid #777;height: 4px;border-radius: 2px; margin:5px;}
+</string>
        </property>
        <property name="minimum">
         <number>1</number>
@@ -345,7 +346,7 @@ alternate-background-color: rgb(149, 255, 119);</string>
        </sizepolicy>
       </property>
       <property name="styleSheet">
-       <string notr="true">background-color: rgb(236, 241, 180);</string>
+       <string notr="true">background-color: rgb(244, 230, 201);</string>
       </property>
       <attribute name="label">
        <string>Colors</string>
@@ -356,11 +357,13 @@ alternate-background-color: rgb(149, 255, 119);</string>
          <x>20</x>
          <y>40</y>
          <width>391</width>
-         <height>31</height>
+         <height>21</height>
         </rect>
        </property>
        <property name="styleSheet">
-        <string notr="true"/>
+        <string notr="true">.QSlider::handle:horizontal { background: #efc062; border: 1px solid #B5E61D; height: 50px; margin: -30px -30px; border-radius: 4px; }
+.QSlider::sub-page:horizontal {background: qlineargradient(x1: 0, y1: 0,    x2: 0, y2: 1, stop: 0 #e1e1e1 stop: 1 #d8d8d8);background: qlineargradient(x1: 0, y1: 0.2, x2: 1, y2: 1,stop: 0 #e1e1e1, stop: 1 #d8d8d8);border: 1px solid #777;height: 4px;border-radius: 2px; margin:5px;}
+</string>
        </property>
        <property name="minimum">
         <number>2</number>
@@ -432,11 +435,13 @@ alternate-background-color: rgb(149, 255, 119);</string>
          <x>20</x>
          <y>110</y>
          <width>391</width>
-         <height>31</height>
+         <height>21</height>
         </rect>
        </property>
        <property name="styleSheet">
-        <string notr="true"/>
+        <string notr="true">.QSlider::handle:horizontal { background: #efc062; border: 1px solid #B5E61D; height: 50px; margin: -30px -30px; border-radius: 4px; }
+.QSlider::sub-page:horizontal {background: qlineargradient(x1: 0, y1: 0,    x2: 0, y2: 1, stop: 0 #e1e1e1 stop: 1 #d8d8d8);background: qlineargradient(x1: 0, y1: 0.2, x2: 1, y2: 1,stop: 0 #e1e1e1, stop: 1 #d8d8d8);border: 1px solid #777;height: 4px;border-radius: 2px; margin:5px;}
+</string>
        </property>
        <property name="minimum">
         <number>-100</number>
@@ -538,7 +543,7 @@ alternate-background-color: rgb(149, 255, 119);</string>
         </font>
        </property>
        <property name="styleSheet">
-        <string notr="true">QComboBox{ background-color: rgb(179, 195, 71); }
+        <string notr="true">QComboBox{ background-color: rgb(239, 192, 98); }
 </string>
        </property>
        <item>
@@ -573,7 +578,7 @@ alternate-background-color: rgb(149, 255, 119);</string>
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">background-color: rgb(236, 241, 180);</string>
+       <string notr="true">background-color: rgb(244, 230, 201);</string>
       </property>
       <attribute name="label">
        <string>Smoothing</string>
@@ -605,11 +610,13 @@ alternate-background-color: rgb(149, 255, 119);</string>
          <x>20</x>
          <y>40</y>
          <width>391</width>
-         <height>31</height>
+         <height>21</height>
         </rect>
        </property>
        <property name="styleSheet">
-        <string notr="true"/>
+        <string notr="true">.QSlider::handle:horizontal { background: #efc062; border: 1px solid #B5E61D; height: 50px; margin: -30px -30px; border-radius: 4px; }
+.QSlider::sub-page:horizontal {background: qlineargradient(x1: 0, y1: 0,    x2: 0, y2: 1, stop: 0 #e1e1e1 stop: 1 #d8d8d8);background: qlineargradient(x1: 0, y1: 0.2, x2: 1, y2: 1,stop: 0 #e1e1e1, stop: 1 #d8d8d8);border: 1px solid #777;height: 4px;border-radius: 2px; margin:5px;}
+</string>
        </property>
        <property name="minimum">
         <number>1</number>
@@ -651,11 +658,13 @@ alternate-background-color: rgb(149, 255, 119);</string>
          <x>20</x>
          <y>190</y>
          <width>391</width>
-         <height>31</height>
+         <height>21</height>
         </rect>
        </property>
        <property name="styleSheet">
-        <string notr="true"/>
+        <string notr="true">.QSlider::handle:horizontal { background: #efc062; border: 1px solid #B5E61D; height: 50px; margin: -30px -30px; border-radius: 4px; }
+.QSlider::sub-page:horizontal {background: qlineargradient(x1: 0, y1: 0,    x2: 0, y2: 1, stop: 0 #e1e1e1 stop: 1 #d8d8d8);background: qlineargradient(x1: 0, y1: 0.2, x2: 1, y2: 1,stop: 0 #e1e1e1, stop: 1 #d8d8d8);border: 1px solid #777;height: 4px;border-radius: 2px; margin:5px;}
+</string>
        </property>
        <property name="minimum">
         <number>1</number>
@@ -724,11 +733,13 @@ alternate-background-color: rgb(149, 255, 119);</string>
          <x>20</x>
          <y>110</y>
          <width>391</width>
-         <height>31</height>
+         <height>21</height>
         </rect>
        </property>
        <property name="styleSheet">
-        <string notr="true"/>
+        <string notr="true">.QSlider::handle:horizontal { background: #efc062; border: 1px solid #B5E61D; height: 50px; margin: -30px -30px; border-radius: 4px; }
+.QSlider::sub-page:horizontal {background: qlineargradient(x1: 0, y1: 0,    x2: 0, y2: 1, stop: 0 #e1e1e1 stop: 1 #d8d8d8);background: qlineargradient(x1: 0, y1: 0.2, x2: 1, y2: 1,stop: 0 #e1e1e1, stop: 1 #d8d8d8);border: 1px solid #777;height: 4px;border-radius: 2px; margin:5px;}
+</string>
        </property>
        <property name="minimum">
         <number>0</number>
@@ -844,7 +855,7 @@ alternate-background-color: rgb(149, 255, 119);</string>
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">background-color: rgb(236, 241, 180);</string>
+       <string notr="true">background-color: rgb(244, 230, 201);</string>
       </property>
       <attribute name="label">
        <string>Export</string>
@@ -864,7 +875,7 @@ alternate-background-color: rgb(149, 255, 119);</string>
         </font>
        </property>
        <property name="styleSheet">
-        <string notr="true">QComboBox{ background-color: rgb(179, 195, 71); }
+        <string notr="true">QComboBox{ background-color: rgb(239, 192, 98); }
 </string>
        </property>
        <item>
@@ -955,11 +966,13 @@ alternate-background-color: rgb(149, 255, 119);</string>
          <x>20</x>
          <y>120</y>
          <width>391</width>
-         <height>31</height>
+         <height>21</height>
         </rect>
        </property>
        <property name="styleSheet">
-        <string notr="true"/>
+        <string notr="true">.QSlider::handle:horizontal { background: #efc062; border: 1px solid #B5E61D; height: 50px; margin: -30px -30px; border-radius: 4px; }
+.QSlider::sub-page:horizontal {background: qlineargradient(x1: 0, y1: 0,    x2: 0, y2: 1, stop: 0 #e1e1e1 stop: 1 #d8d8d8);background: qlineargradient(x1: 0, y1: 0.2, x2: 1, y2: 1,stop: 0 #e1e1e1, stop: 1 #d8d8d8);border: 1px solid #777;height: 4px;border-radius: 2px; margin:5px;}
+</string>
        </property>
        <property name="minimum">
         <number>1</number>
@@ -997,8 +1010,8 @@ alternate-background-color: rgb(149, 255, 119);</string>
       </font>
      </property>
      <property name="styleSheet">
-      <string notr="true">background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0 rgba(217, 217, 108, 255), stop:1 rgba(217, 217, 108, 255));
-alternate-background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0 rgba(217, 217, 108, 255), stop:1 rgba(231, 231, 122, 255));</string>
+      <string notr="true">background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0 rgba(239, 192, 98, 255), stop:1 rgba(239, 192, 98, 255));
+alternate-background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0 rgba(239, 192, 98, 255), stop:1 rgba(239, 202, 108, 255));</string>
      </property>
      <property name="text">
       <string>UPDATE</string>
@@ -1017,7 +1030,7 @@ alternate-background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, 
     </sizepolicy>
    </property>
    <property name="styleSheet">
-    <string notr="true">background-color: rgb(255, 254, 197);
+    <string notr="true">background-color: rgb(244, 230, 201);
 </string>
    </property>
    <property name="features">
@@ -1045,17 +1058,77 @@ alternate-background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, 
        <verstretch>0</verstretch>
       </sizepolicy>
      </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: transparent</string>
+     </property>
      <property name="text">
       <string/>
      </property>
      <property name="textFormat">
-      <enum>Qt::MarkdownText</enum>
+      <enum>Qt::PlainText</enum>
      </property>
      <property name="scaledContents">
       <bool>false</bool>
      </property>
      <property name="alignment">
       <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+    <widget class="QSlider" name="VideoSlider">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>720</y>
+       <width>931</width>
+       <height>22</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">.QSlider::handle:horizontal { background: #efc062; border: 1px solid #B5E61D; height: 50px; margin: -30px -30px; border-radius: 4px; }
+.QSlider::sub-page:horizontal {background: qlineargradient(x1: 0, y1: 0,    x2: 0, y2: 1, stop: 0 #e1e1e1 stop: 1 #d8d8d8);background: qlineargradient(x1: 0, y1: 0.2, x2: 1, y2: 1,stop: 0 #e1e1e1, stop: 1 #d8d8d8);border: 1px solid #777;height: 4px;border-radius: 2px; margin:5px;}
+
+
+
+
+
+</string>
+     </property>
+     <property name="maximum">
+      <number>10000</number>
+     </property>
+     <property name="value">
+      <number>0</number>
+     </property>
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+    </widget>
+    <widget class="QLabel" name="VideoTimeLabel">
+     <property name="geometry">
+      <rect>
+       <x>380</x>
+       <y>691</y>
+       <width>211</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>8514oem</family>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(225, 225, 225);
+color: rgb(0, 0, 0);</string>
+     </property>
+     <property name="text">
+      <string>00h : 00m : 00s</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+     <property name="textInteractionFlags">
+      <set>Qt::NoTextInteraction</set>
      </property>
     </widget>
    </widget>
@@ -1067,7 +1140,7 @@ alternate-background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, 
   </action>
   <action name="OpenVideoAction">
    <property name="enabled">
-    <bool>false</bool>
+    <bool>true</bool>
    </property>
    <property name="text">
     <string>Open Video</string>

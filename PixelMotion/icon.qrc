@@ -1,5 +1,7 @@
 <RCC>
     <qresource prefix="/">
         <file>pixelmotion.ico</file>
+        <file>images/banner.png</file>
+        <file>images/bannerTransparent.png</file>
     </qresource>
 </RCC>
