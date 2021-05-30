@@ -1058,6 +1058,9 @@ alternate-background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, 
        <verstretch>0</verstretch>
       </sizepolicy>
      </property>
+     <property name="layoutDirection">
+      <enum>Qt::LeftToRight</enum>
+     </property>
      <property name="styleSheet">
       <string notr="true">background-color: transparent</string>
      </property>
@@ -1129,6 +1132,72 @@ color: rgb(0, 0, 0);</string>
      </property>
      <property name="textInteractionFlags">
       <set>Qt::NoTextInteraction</set>
+     </property>
+    </widget>
+    <widget class="QProgressBar" name="VideoExportBar">
+     <property name="enabled">
+      <bool>true</bool>
+     </property>
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>20</y>
+       <width>941</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="minimumSize">
+      <size>
+       <width>941</width>
+       <height>23</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>941</width>
+       <height>23</height>
+      </size>
+     </property>
+     <property name="font">
+      <font>
+       <family>8514oem</family>
+      </font>
+     </property>
+     <property name="layoutDirection">
+      <enum>Qt::LeftToRight</enum>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QProgressBar:horizontal {
+border: 1px solid gray;
+border-radius: 3px;
+background: white;
+padding: 1px;
+text-align: center;
+margin-right: 4ex;
+}
+QProgressBar::chunk:horizontal {
+background: rgb(239, 192, 98);
+margin-right: 0px; /* space */
+width: 10px;
+}</string>
+     </property>
+     <property name="value">
+      <number>0</number>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="invertedAppearance">
+      <bool>false</bool>
+     </property>
+     <property name="textDirection">
+      <enum>QProgressBar::TopToBottom</enum>
+     </property>
+     <property name="format">
+      <string>Export Video %p%</string>
      </property>
     </widget>
    </widget>

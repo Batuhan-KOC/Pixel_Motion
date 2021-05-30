@@ -1,6 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include <QFile>
+#include <QDebug>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -9,6 +10,7 @@ MainWindow::MainWindow(QWidget *parent)
     ui->setupUi(this);
     _tuneManager = new TuneManager(this);
 
+    this->ui->VideoExportBar->setVisible(false);
 
     /*Connections between MainWindow and Tune Manager */
     connect(this,&MainWindow::PixelSize_To_TuneManager,_tuneManager,&TuneManager::PixelSizeUpdate);
@@ -25,6 +27,12 @@ MainWindow::MainWindow(QWidget *parent)
     connect(this,&MainWindow::SmoothingActive_To_TuneManager,_tuneManager,&TuneManager::SmoothingActiveUpdate);
     connect(this,&MainWindow::exportRequested,_tuneManager,&TuneManager::exportRequested);
     connect(_tuneManager,&TuneManager::ReturnTopLevelImage,this,&MainWindow::requestResponded);
+    connect(this,&MainWindow::VideoSlider_To_TuneManager, _tuneManager,&TuneManager::VideoSliderUpdate);
+    connect(_tuneManager,&TuneManager::DeliverSliderTime,this,&MainWindow::VideoSlider_Update);
+    connect(this, &MainWindow::videoExportRequested, _tuneManager, &TuneManager::videoExportRequested);
+    connect(this, &MainWindow::sendFileLocation, _tuneManager, &TuneManager::getFileLocation);
+    connect(_tuneManager, &TuneManager::Video_Bar_Echo, this, &MainWindow::videoExportBar);
+    connect(_tuneManager, &TuneManager::Video_Export_Over, this, &MainWindow::videoExportOver);
 
     /*Connections between Action Tabs and corresponding Slots */
     connect(this->ui->OpenImageAction,&QAction::triggered,this,&MainWindow::Open_Image_Action);
@@ -112,7 +120,13 @@ void MainWindow::Open_Video_Action()
 
 void MainWindow::Export_Action()
 {
-    emit exportRequested();
+    if(this->_tuneManager->getImageLoaded())
+        emit exportRequested();
+    else if(this->_tuneManager->getVideoLoaded())
+    {
+        this->ui->VideoExportBar->setVisible(true);
+        emit videoExportRequested();
+    }
 }
 
 void MainWindow::Undo_Action()
@@ -143,7 +157,7 @@ void MainWindow::Set_Export_Location_Action()
         font1.setFamily(QString::fromUtf8("8514oem"));
         font1.setPointSize(6);
 
-        msgBox.setStyleSheet(QString::fromUtf8("background-color: rgb(217, 217, 108);"));
+        msgBox.setStyleSheet(QString::fromUtf8("background-color: rgb(239, 192, 98);"));
 
         QPushButton *connectButton = msgBox.addButton(tr("Yeap!"), QMessageBox::ActionRole);
         connectButton->setFont(font1);
@@ -152,6 +166,8 @@ void MainWindow::Set_Export_Location_Action()
         msgBox.setText("Export Location succesfully initiated!");
         msgBox.exec();
     }
+
+    emit sendFileLocation(this->exportLocation);
 }
 
 void MainWindow::About_Action()
@@ -238,7 +254,7 @@ void MainWindow::requestResponded(QImage image)
         font1.setFamily(QString::fromUtf8("8514oem"));
         font1.setPointSize(6);
 
-        msgBox.setStyleSheet(QString::fromUtf8("background-color: rgb(217, 217, 108);"));
+        msgBox.setStyleSheet(QString::fromUtf8("background-color: rgb(239, 192, 98);"));
 
         QPushButton *connectButton = msgBox.addButton(tr("OK!"), QMessageBox::ActionRole);
         connectButton->setFont(font1);
@@ -293,6 +309,41 @@ bool MainWindow::ShowVideoContent()
 void MainWindow::on_VideoSlider_valueChanged(int value)
 {
     this->videoSliderValue = (float(value)/100.0);
+}
 
+void MainWindow::VideoSlider_Update(QString value)
+{
+    this->ui->VideoTimeLabel->setText(value);
+}
+
+void MainWindow::on_VideoSlider_sliderReleased()
+{
     emit VideoSlider_To_TuneManager(this->videoSliderValue);
+}
+
+void MainWindow::videoExportBar(int value)
+{
+    qDebug()  << "MainWindow got it!";
+    this->ui->VideoExportBar->setValue(value);
+    this->update();
+}
+
+void MainWindow::videoExportOver()
+{
+    // TODO
+    QMessageBox msgBox;
+    msgBox.setStandardButtons(0);
+
+    QFont font1;
+    font1.setFamily(QString::fromUtf8("8514oem"));
+    font1.setPointSize(6);
+
+    msgBox.setStyleSheet(QString::fromUtf8("background-color: rgb(239, 192, 98);"));
+
+    QPushButton *connectButton = msgBox.addButton(tr("OK!"), QMessageBox::ActionRole);
+    connectButton->setFont(font1);
+
+    msgBox.setFont(font1);
+    msgBox.setText("Succesfully exported!");
+    msgBox.exec();
 }

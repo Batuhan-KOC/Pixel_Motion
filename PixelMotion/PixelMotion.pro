@@ -17,6 +17,19 @@ DEFINES += QT_DEPRECATED_WARNINGS
 # You can also select to disable deprecated APIs only up to a certain version of Qt.
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
+INCLUDEPATH += C:\Libraries\opencvBuild64\install
+DEPENDPATH += C:\Libraries\opencvBuild64\install
+INCLUDEPATH += C:\Libraries\opencvBuild64\install\include
+DEPENDPATH += C:\Libraries\opencvBuild64\install\include
+
+
+LIBS += C:\Libraries\opencvBuild64\install\x64\mingw\bin\libopencv_core451.dll
+LIBS += C:\Libraries\opencvBuild64\install\x64\mingw\bin\libopencv_highgui451.dll
+LIBS += C:\Libraries\opencvBuild64\install\x64\mingw\bin\libopencv_imgcodecs451.dll
+LIBS += C:\Libraries\opencvBuild64\install\x64\mingw\bin\libopencv_imgproc451.dll
+LIBS += C:\Libraries\opencvBuild64\install\x64\mingw\bin\libopencv_calib3d451.dll
+LIBS += C:\Libraries\opencvBuild64\install\x64\mingw\bin\libopencv_video451.dll
+LIBS += C:\Libraries\opencvBuild64\install\x64\mingw\bin\libopencv_videoio451.dll
 
 SOURCES += \
     Quantizers/mediancutquantizer.cpp \
@@ -25,7 +38,8 @@ SOURCES += \
     imageprocessor.cpp \
     main.cpp \
     mainwindow.cpp \
-    tunemanager.cpp
+    tunemanager.cpp \
+    videoprocessor.cpp
 
 HEADERS += \
     Quantizers.h \
@@ -34,7 +48,8 @@ HEADERS += \
     gaussianblur.h \
     imageprocessor.h \
     mainwindow.h \
-    tunemanager.h
+    tunemanager.h \
+    videoprocessor.h
 
 FORMS += \
     mainwindow.ui
@@ -46,4 +61,6 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 RESOURCES += \
     icon.qrc
+
+
 

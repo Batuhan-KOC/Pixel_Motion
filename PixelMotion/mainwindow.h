@@ -37,6 +37,8 @@ signals:
     void FileLocation_To_TuneManager(QString value);
     void UpdateRequested();
     void exportRequested();
+    void videoExportRequested();
+    void sendFileLocation(QString value);
 
 
 
@@ -86,6 +88,14 @@ private slots:
     void on_QualitySlider_valueChanged(int value);
 
     void on_VideoSlider_valueChanged(int value);
+
+    void VideoSlider_Update(QString value);
+
+    void on_VideoSlider_sliderReleased();
+
+    void videoExportBar(int value);
+
+    void videoExportOver();
 
 private:
     Ui::MainWindow *ui;
